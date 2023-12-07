@@ -3,7 +3,10 @@ package db;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+
 import utils.BasicUtils;
+import utils.MyLambdaLogger;
 public class JDBConnectionTest {
 	static Map<Character, Integer> charsToInt = new HashMap<>();
 	static Map<Integer, Character> intToChar = new HashMap<>();
@@ -11,7 +14,8 @@ public class JDBConnectionTest {
 	private static final long MAX = 63;
 	private static final String MAX_RANGE = "ddd";
 	public static void main(String[] args) {
-		
+		LambdaLogger logger = new MyLambdaLogger().getLogger();
+		BasicUtils.logger = logger;
 		String secret = BasicUtils.getSecret();
 		Map<String,String> jsonToMap = BasicUtils.jsonToMap(secret);
 		JDBCConnection jdbcConnection = new JDBCConnection();

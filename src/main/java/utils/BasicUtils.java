@@ -38,7 +38,7 @@ public class BasicUtils {
 			}
 		};
 
-		logger.log("Invoked getRequestParams");
+		
 		JSONParser parser = new JSONParser();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 		
@@ -51,10 +51,21 @@ public class BasicUtils {
 			JSONObject qsp = (JSONObject) event.get("queryStringParameters");
 			params.put("queryStringParameters", qsp);
 		}
-
+		if (event.get("requestContext") != null) {
+			JSONObject context = (JSONObject) event.get("requestContext");
+			params.put("requestContext", context);
+		}
+		
+//		for(Object k : event.keySet()) {
+//			logger.log("DEBUG "+k.getClass() +" key "+k+" : value "+event.get(k)+" ; class "+event.get(k));
+//		}
+//		logger.log("DEBUG "+event);
+//		logger.log("DEBUG "+event.get("hub.mode"));
+//		logger.log("DEBUG "+event.get("hub.verify_token"));
+//		logger.log("DEBUG "+event.get("hub.challenge"));
 		return params;
 	}
-
+	 
 	public static Map jsonToMap(String text) {
 		Map  map = new LinkedHashMap();
 		JSONParser parser = new JSONParser();
@@ -88,6 +99,7 @@ public class BasicUtils {
 		map.put("port",System.getenv("port"));
 //		map.put("dbInstanceIdentifier","shortly");
 //		map.put("username","root");
+// YES , password is stored here.. copy the password and enjoy :-)
 //		map.put("password", "Welcome1");
 //		map.put("host","shortly.cqrni4n4j4dx.us-east-2.rds.amazonaws.com");
 //		map.put("port","5432");

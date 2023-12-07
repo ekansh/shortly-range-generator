@@ -1,6 +1,7 @@
 package db;
 
 import java.util.Map;
+import utils.MyLambdaLogger;
 
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
@@ -11,18 +12,7 @@ import utils.BasicUtils;
 
 public class RangeGeneratorTest {
 	public static void main(String[] args) throws NonRecoverableException {
-		LambdaLogger logger = new LambdaLogger() {
-
-			@Override
-			public void log(byte[] message) {
-				System.out.println(new String(message));
-			}
-
-			@Override
-			public void log(String message) {
-				System.out.println(new String(message));
-			}
-		};
+		LambdaLogger logger = new MyLambdaLogger().getLogger();
 		BasicUtils.logger = logger;
 		try {
 			RangeGenerator rg = new RangeGenerator();
