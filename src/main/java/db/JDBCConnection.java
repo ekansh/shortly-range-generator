@@ -88,7 +88,7 @@ public class JDBCConnection {
 		String connectionString = "jdbc:postgresql://" + host + ":" + port + "/" + db;
 //		conn = DriverManager.getConnection(
 //				"jdbc:postgresql://shortly.cqrni4n4j4dx.us-east-2.rds.amazonaws.com:5432/shortly", "root",
-//				"Welcome1");
+//				"REPLACE with password");
 		logger.log("getting a db connection "+connectionString+"/"+username+"/"+password);
 		conn = DriverManager.getConnection(connectionString, username, password);
 		return conn;

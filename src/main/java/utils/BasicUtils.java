@@ -99,8 +99,8 @@ public class BasicUtils {
 		map.put("port",System.getenv("port"));
 //		map.put("dbInstanceIdentifier","shortly");
 //		map.put("username","root");
-// YES , password is stored here.. copy the password and enjoy :-)
-//		map.put("password", "Welcome1");
+// REPLACE with password
+//		map.put("password", "REPLACE WITH PASSWORD");
 //		map.put("host","shortly.cqrni4n4j4dx.us-east-2.rds.amazonaws.com");
 //		map.put("port","5432");
 		return map;
